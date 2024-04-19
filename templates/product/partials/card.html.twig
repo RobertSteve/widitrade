@@ -1,0 +1,12 @@
+<div class="border position-relative mt-4 mb-5">
+    {% if product.getLabel() %}
+        <div class="{{ product.getLabel() == 'MEJOR VALOR 2024' ? 'label' : 'label labelSecondary' }}">
+            #{{ product.getId() }} {{ product.getLabel() }}
+        </div>
+    {% else %}
+        <div class="fw-bolder position-absolute p-1" style="background-color: #e8e8e8;">
+            #{{ product.getId() }}
+        </div>
+    {% endif %}
+    {{ include('product/partials/details.html.twig', {product: product}) }}
+</div>

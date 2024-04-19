@@ -1,0 +1,78 @@
+.label {
+    background-color: #8acc42;
+    color: #fff;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    position: absolute;
+    top: -18px;
+    left: -10px;
+    z-index: 10;
+}
+.label::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 18px solid #8acc42;
+    border-bottom: 18px solid #8acc42;
+    border-left: 20px solid transparent;
+    transform: rotate(180deg);
+}
+.label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    top: 36px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #8acc42;
+    border-left: 10px solid transparent;
+}
+.labelSecondary {
+    background-color: #639330 !important;
+}
+.labelSecondary::after {
+    border-top: 18px solid #639330 !important;
+    border-bottom: 18px solid #639330 !important;
+}
+.labelSecondary::before {
+    border-top: 10px solid #639330 !important;
+}
+.image {
+    object-fit: cover;
+    object-position: center;
+}
+.star-ratings {
+    unicode-bidi: bidi-override;
+    color: #ccc;
+    font-size: 30px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+.star-ratings .fill-ratings {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.star-ratings .fill-ratings span {
+    display: inline-block;
+}
+.star-ratings .empty-ratings {
+    padding: 0;
+    display: block;
+    z-index: 0;
+}
+.accordion-button:focus,
+.accordion-button:not(.collapsed) {
+    box-shadow: 0 0 0 0.25rem transparent;
+}

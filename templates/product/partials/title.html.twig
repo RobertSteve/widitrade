@@ -1,0 +1,5 @@
+{% if title|length > truncate %}
+    {{ title|slice(0, truncate) }}...
+{% else %}
+    {{ title }}
+{% endif %}

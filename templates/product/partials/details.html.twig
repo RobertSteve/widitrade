@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 border-end p-0">
+            {% if product.getProductImages().first() %}
+                <img src="{{ product.getProductImages().first().getLink() }}" alt="Producto" class="w-100 h-100">
+            {% else %}
+                <img src="https://via.placeholder.com/150" alt="Producto" class="w-100 h-100">
+            {% endif %}
+        </div>
+        <div class="col-lg-2 border-end d-flex align-items-center text-center py-4">
+            <div class="flex flex-column m-auto">
+                <div class="fs-2 fw-bold">{{ product.getRating() | number_format(1) }}</div>
+                {{ include('product/partials/rating.html.twig', { 'rating': product.getRating() }) }}
+                <div class="text-primary">"{{ product.getRatingDescription() }}"</div>
+            </div>
+        </div>
+        <div class="col-lg-6 border-end py-4">
+            <h4>
+                {{ include('product/partials/title.html.twig', { 'title': product.getTitle(), 'truncate': 65 }) }}
+            </h4>
+            <p class="text-muted">{{ product.getBusiness().getName() }}</p>
+            <div class="mb-3">
+                <div class="badge text-dark border">
+                    {{ product.getDiscount() }}% Descuento
+                </div>
+                {% if product.isFreeShipping() %}
+                    <div class="badge text-dark border">
+                        Envío gratis
+                    </div>
+                {% endif %}
+            </div>
+            <button type="button" class="accordion-button collapsed w-auto bg-transparent p-0" data-bs-toggle="collapse" href="#collapse_{{ product.getId() }}" role="button" aria-expanded="true">
+                Mostrar más &nbsp;
+            </button>
+
+        </div>
+        {{ include('product/partials/buttons.html.twig', { 'product': product, 'class': 'flex-column', 'classParent': 'align-items-center' }) }}
+    </div>
+    <div class="collapse row border" id="collapse_{{ product.getId() }}">
+        <div class="col-lg-10">
+            <ul>
+                {% for detail in product.getProductDetails().toArray() %}
+                    <li class="mt-3">{{ detail.getDescription() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {{ include('product/partials/buttons.html.twig', { 'product': product, 'class': 'flex-column-reverse' }) }}
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var starsContainers = document.querySelectorAll('.star-ratings')
+        starsContainers.forEach(function(stars) {
+            var rating = parseFloat(stars.getAttribute('data-rating'))
+            var ratingPercent = (rating / 10) * 100
+            stars.querySelector('.fill-ratings').style.width = `${ratingPercent}%`
+        })
+        console.log(starsContainers)
+    })
+</script>

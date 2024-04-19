@@ -2,6 +2,8 @@
 /app/config/parameters.yml
 /var/cache/*
 /var/logs/*
+/var/log/*
+
 /var/sessions/*
 !/var/cache/.gitkeep
 !/var/logs/.gitkeep
